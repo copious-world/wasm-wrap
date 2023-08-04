@@ -1,0 +1,3 @@
+cargo:rerun-if-changed=build/main.rs
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/Users/richardalbertleddy/Documents/GitHub/universal-content/blake3-node-neon-no-package/client/target/wasm32-unknown-unknown/release/build/typenum-8c80567dbfa33ec4/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/Users/richardalbertleddy/Documents/GitHub/universal-content/blake3-node-neon-no-package/client/target/wasm32-unknown-unknown/release/build/typenum-8c80567dbfa33ec4/out/op.rs

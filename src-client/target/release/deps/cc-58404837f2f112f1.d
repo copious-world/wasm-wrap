@@ -1,0 +1,10 @@
+/Users/richardalbertleddy/Documents/GitHub/universal-content/blake3-node-neon-no-package/client/target/release/deps/cc-58404837f2f112f1.rmeta: /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/lib.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe/unix.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/windows_registry.rs
+
+/Users/richardalbertleddy/Documents/GitHub/universal-content/blake3-node-neon-no-package/client/target/release/deps/libcc-58404837f2f112f1.rlib: /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/lib.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe/unix.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/windows_registry.rs
+
+/Users/richardalbertleddy/Documents/GitHub/universal-content/blake3-node-neon-no-package/client/target/release/deps/cc-58404837f2f112f1.d: /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/lib.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe/unix.rs /Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/windows_registry.rs
+
+/Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/lib.rs:
+/Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe.rs:
+/Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/os_pipe/unix.rs:
+/Users/richardalbertleddy/.cargo/registry/src/index.crates.io-6f17d22bba15001f/cc-1.0.81/src/windows_registry.rs:

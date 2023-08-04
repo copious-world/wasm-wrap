@@ -1,0 +1,1 @@
+/Users/richardalbertleddy/Documents/GitHub/alphas/wasm-wrap/src-client/target/wasm32-unknown-unknown/release/wasm_nopackage.wasm: /Users/richardalbertleddy/Documents/GitHub/alphas/wasm-wrap/src-client/src/lib.rs
