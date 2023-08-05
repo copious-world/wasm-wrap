@@ -22,7 +22,7 @@ unsafe fn convert_str(input: &str) -> *mut c_char {
     return c_str;
 }
 
-
+///
 /// message_js is avalable for module use. 
 /// ex_message calls it
 #[no_mangle]
@@ -34,6 +34,7 @@ pub fn ex_message(alertable: &String) {
 }
 
 
+///
 /// Allocate memory into the module's linear memory
 /// and return the offset to the start of the block.
 #[no_mangle]
@@ -53,20 +54,14 @@ pub fn alloc(len: usize) -> *mut u8 {
 }
 
 
-/*
-#[no_mangle]
-pub unsafe extern "C" fn dealloc(ptr: *mut c_void) {
-    let _ = Vec::from_raw_parts(ptr, 0, 1024);
-}
-//
-let data = Vec::from_raw_parts(ptr, size, size);
-mem::drop(data);
-*/
-
+///
 /// free memory taken up in linear memory.
+/// The original pointer offset will be found in ptr, and the size of the previously allocated block is required.
 #[no_mangle]
-pub unsafe fn dealloc(ptr: *mut u8, size: usize) {
-    let _ = Vec::from_raw_parts(ptr, 0, size);  // length < capacity
+pub fn dealloc(ptr: *mut u8, size: usize) {
+    unsafe {
+        let _ = Vec::from_raw_parts(ptr, 0, size);  // length < capacity
+    }
 }
 
 
@@ -88,10 +83,22 @@ pub fn plugin_name_len() -> usize {
 
 
 
-
+/// test method - used to check that HTML can provided the callback (See js implementations)
 #[no_mangle]
 pub unsafe fn test_callback() {
     let str = String::from("we are calling back");
     ex_message(&str);
 }
 
+
+
+
+/*
+#[no_mangle]
+pub unsafe extern "C" fn dealloc(ptr: *mut c_void) {
+    let _ = Vec::from_raw_parts(ptr, 0, 1024);
+}
+//
+let data = Vec::from_raw_parts(ptr, size, size);
+mem::drop(data);
+*/

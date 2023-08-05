@@ -1,6 +1,6 @@
 {
-  "name": "wasm-wrap",
-  "version": "1.0.0",
+  "name": "wasm-base-wrap",
+  "version": "1.0.1",
   "description": "A very small class for wrapping basic wasm made for easy extension.",
   "main": "index.js",
   "scripts": {
