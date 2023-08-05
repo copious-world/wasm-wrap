@@ -1,10 +1,10 @@
 [package]
 name = "wasm-nopackage"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Richard Leddy <rleddy@copious.world>"]
 description = "Basic alloc and dealloc and module setup for lightweight WASM modules."
 license = "GPL-2.0-only"
-repository = "https://github.com/copious-world/copious-counters"
+repository = "https://github.com/copious-world/wasm-wrap"
 edition = "2018"
 exclude = [
     ".DS_Store",
