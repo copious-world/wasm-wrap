@@ -27,10 +27,12 @@ unsafe fn convert_str(input: &str) -> *mut c_char {
 /// ex_message calls it
 #[no_mangle]
 pub fn ex_message(alertable: &String) {
+    /*
     unsafe {
         let pointer = convert_str(alertable.as_str());
         message_js(pointer,alertable.len());    
     }
+    */
 }
 
 
