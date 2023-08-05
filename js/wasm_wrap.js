@@ -125,4 +125,14 @@ class WASMInterface {
         let str = this.wasm_string(str_offset, size);
         alert(str);
     }
+
+    /**
+     * 
+     * @returns the string that is the name of the plugin
+     */
+    plugin_name_str() {
+        let plgn_name_ref = this.plugin_name();
+        let slen = this.plugin_name_len();
+        return this.wasm_string(plgn_name_ref, slen);
+    }
 }

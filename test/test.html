@@ -18,6 +18,7 @@
         await wasmod.init("mod")
         wasmod.startup()  // entrypoint is from the module call tables
         wasmod.test_callback();  // the module wasm-nopackage provides this entry point.
+        console.log(wasmod.plugin_name_str())
         //
       }
       //

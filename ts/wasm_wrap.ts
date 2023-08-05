@@ -18,6 +18,8 @@ class WASMInterface {
     decoder : TextDecoder;
     alloc : (size: number) => number
     dealloc : (pointer : number,size : number) => void
+    plugin_name : Function;
+    plugin_name_len : Function;
 
     constructor(mod_path) {
         this._mod_path = mod_path
@@ -154,6 +156,11 @@ class WASMInterface {
     }
 
 
+    plugin_name_str() {
+        let plgn_name_ref = this.plugin_name();
+        let slen = this.plugin_name_len()
+        return this.wasm_string(plgn_name_ref,slen)
+    }
 }
 
 

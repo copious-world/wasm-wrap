@@ -1,9 +1,5 @@
 
-use std::ffi::CString;
-//use std::ffi::CStr;
-use std::os::raw::{c_char};
-
-use wasm_nopackage::{go_live,my_plugin_name};
+use wasm_nopackage::{go_live,set_plugin_name};
 
 
 #[link(wasm_import_module = "mod")]
@@ -31,20 +27,6 @@ fn my_plugin_name() -> &'static str {
 pub fn startup() {
     go_live(output_string);
     set_plugin_name(my_plugin_name);
-}
-
-
-
-#[no_mangle]
-pub extern "C" fn plugin_name_2() -> *mut c_char {
-    let s = CString::new(PLUGIN_NAME).unwrap();
-    s.into_raw()
-}
-
-
-#[no_mangle]
-pub fn plugin_name_len_3() -> usize {
-    PLUGIN_NAME.len()
 }
 
 
