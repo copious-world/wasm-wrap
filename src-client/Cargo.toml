@@ -1,6 +1,6 @@
 [package]
 name = "wasm-nopackage"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Richard Leddy <rleddy@copious.world>"]
 description = "Basic alloc and dealloc and module setup for lightweight WASM modules."
 license = "GPL-2.0-only"

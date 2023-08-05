@@ -11,10 +11,11 @@ https://github.com/radu-matei/wasm-memory/blob/main/src/lib.rs
 https://depth-first.com/articles/2020/07/07/rust-and-webassembly-from-scratch-hello-world-with-strings/
 */
 
-#[link(wasm_import_module = "mod")]
-extern "C" {
-    fn message_js(s: *mut i8, size: usize);
-}
+type ExOp = fn(s: *mut i8, size: usize) -> ();
+
+fn do_nothing(_s: *mut i8, _size: usize) -> () {}
+
+static mut INTERNAL_MESSENGER : ExOp = do_nothing;
 
 
 unsafe fn convert_str(input: &str) -> *mut c_char {
@@ -27,12 +28,18 @@ unsafe fn convert_str(input: &str) -> *mut c_char {
 /// ex_message calls it
 #[no_mangle]
 pub fn ex_message(alertable: &String) {
-    /*
     unsafe {
         let pointer = convert_str(alertable.as_str());
-        message_js(pointer,alertable.len());    
+        INTERNAL_MESSENGER(pointer,alertable.len());    
     }
-    */
+}
+
+
+#[no_mangle]
+pub fn go_live( m_fn : ExOp ) {
+    unsafe {
+        INTERNAL_MESSENGER = m_fn;
+    }
 }
 
 
