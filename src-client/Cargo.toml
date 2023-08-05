@@ -6,7 +6,10 @@ description = "Basic alloc and dealloc and module setup for lightweight WASM mod
 license = "GPL-2.0-only"
 repository = "https://github.com/copious-world/copious-counters"
 edition = "2018"
-
+exclude = [
+    ".DS_Store",
+    "build.sh",
+]
 
 [lib]
 crate-type=["rlib", "cdylib"]

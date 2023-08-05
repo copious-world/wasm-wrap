@@ -3,11 +3,10 @@
 <html lang="en-US">
   <head>
     <meta charset="utf-8" />
-    <title>hello-wasm example</title>
+    <title>wasm-wrap test</title>
   </head>
   <body>
     <script src="js/wasm_wrap.js" ></script>
-    <script src="js/hash_wrap.js" ></script>
     <script>
 
 /*
@@ -49,15 +48,11 @@ async function  base64_arraybuffer(data) {
 
   async function main() {
 
-      let wasmod = new Hasher('/wasm/blake3_wasm_nopackage')
+      let wasmod = new WASMInterface('/wasm/wasm_nopackage')
       await wasmod.init("mod")
 
-      const u8array = wasmod.hash('this big test of hashing');
+      wasmod.test_callback();
 
-
-      console.log(u8array2hex(u8array))
-      console.log(await base64_arraybuffer(u8array))
-      
       //
   }
 

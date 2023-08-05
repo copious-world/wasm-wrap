@@ -11,6 +11,28 @@ https://github.com/radu-matei/wasm-memory/blob/main/src/lib.rs
 https://depth-first.com/articles/2020/07/07/rust-and-webassembly-from-scratch-hello-world-with-strings/
 */
 
+#[link(wasm_import_module = "mod")]
+extern "C" {
+    fn message_js(s: *mut i8, size: usize);
+}
+
+
+unsafe fn convert_str(input: &str) -> *mut c_char {
+    let c_str = CString::new(input).unwrap().into_raw();
+    return c_str;
+}
+
+
+/// message_js is avalable for module use. 
+/// ex_message calls it
+#[no_mangle]
+pub fn ex_message(alertable: &String) {
+    unsafe {
+        let pointer = convert_str(alertable.as_str());
+        message_js(pointer,alertable.len());    
+    }
+}
+
 
 /// Allocate memory into the module's linear memory
 /// and return the offset to the start of the block.
@@ -36,14 +58,12 @@ pub fn alloc(len: usize) -> *mut u8 {
 pub unsafe extern "C" fn dealloc(ptr: *mut c_void) {
     let _ = Vec::from_raw_parts(ptr, 0, 1024);
 }
-
-    let data = Vec::from_raw_parts(ptr, size, size);
-    mem::drop(data);
-
-
+//
+let data = Vec::from_raw_parts(ptr, size, size);
+mem::drop(data);
 */
 
-
+/// free memory taken up in linear memory.
 #[no_mangle]
 pub unsafe fn dealloc(ptr: *mut u8, size: usize) {
     let _ = Vec::from_raw_parts(ptr, 0, size);  // length < capacity
@@ -65,4 +85,13 @@ pub fn plugin_name_len() -> usize {
     PLUGIN_NAME.len()
 }
 
+
+
+
+
+#[no_mangle]
+pub unsafe fn test_callback() {
+    let str = String::from("we are calling back");
+    ex_message(&str);
+}
 

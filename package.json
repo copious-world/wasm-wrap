@@ -4,7 +4,7 @@
   "description": "A very small class for wrapping basic wasm made for easy extension.",
   "main": "index.js",
   "scripts": {
-    "test": "node test/index.js"
+    "test": "node assets/wasm_serv.js &  open http://localhost:8080/"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,17 @@
   "bugs": {
     "url": "https://github.com/copious-world/wasm-wrap/issues"
   },
-  "homepage": "https://github.com/copious-world/wasm-wrap#readme"
+  "homepage": "https://github.com/copious-world/wasm-wrap#readme",
+  "devDependencies": {
+    "@polka/send-type": "^0.5.2",
+    "@types/node": "^10.17.60",
+    "body-parser": "^1.20.2",
+    "compress": "^0.99.0",
+    "compression": "^1.7.4",
+    "cors": "^2.8.5",
+    "polka": "^0.5.2",
+    "serve-static": "^1.15.0",
+    "typescript": "^2.9.2",
+    "typings-tester": "^0.3.2"
+  }
 }

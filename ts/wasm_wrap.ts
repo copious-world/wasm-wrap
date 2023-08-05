@@ -62,7 +62,7 @@ class WASMInterface {
                                         __memory_base: 0,
                                         __table_base: 0,
                                         memory: new WebAssembly.Memory({initial: 1}),
-                                        "alert" : (str_offset,size) => { this.wasm_alert(str_offset,size) }
+                                        "message_js" : (str_offset,size) => { this.wasm_alert(str_offset,size) }
                                     }
         this.mod = await this.get_wasm_module(this._mod_path,importObject)
         let self = this
