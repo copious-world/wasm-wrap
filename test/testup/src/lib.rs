@@ -1,4 +1,9 @@
-use wasm_nopackage::go_live;
+
+use std::ffi::CString;
+//use std::ffi::CStr;
+use std::os::raw::{c_char};
+
+use wasm_nopackage::{go_live,my_plugin_name};
 
 
 #[link(wasm_import_module = "mod")]
@@ -7,6 +12,16 @@ extern "C" {
 }
 
 
+fn output_string(s: *mut i8, size: usize) -> () {
+    unsafe {
+        message_js(s,size);
+    }
+}
+
+fn my_plugin_name() -> &'static str {
+    let my_str : &str = "Test Crate";
+    return my_str;
+}
 
 
 ///
@@ -14,24 +29,21 @@ extern "C" {
 /// The original pointer offset will be found in ptr, and the size of the previously allocated block is required.
 #[no_mangle]
 pub fn startup() {
-    unsafe {
-        go_live(message_js);
-    }
+    go_live(output_string);
+    set_plugin_name(my_plugin_name);
 }
 
 
 
-static PLUGIN_NAME: &'static str = "Test Crate";
-
 #[no_mangle]
-pub extern "C" fn plugin_name() -> *mut c_char {
+pub extern "C" fn plugin_name_2() -> *mut c_char {
     let s = CString::new(PLUGIN_NAME).unwrap();
     s.into_raw()
 }
 
 
 #[no_mangle]
-pub fn plugin_name_len() -> usize {
+pub fn plugin_name_len_3() -> usize {
     PLUGIN_NAME.len()
 }
 

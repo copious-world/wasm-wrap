@@ -8,66 +8,22 @@
   <body>
     <script src="js/wasm_wrap.js" ></script>
     <script>
-
 /*
-
     // https://depth-first.com/articles/2020/07/07/rust-and-webassembly-from-scratch-hello-world-with-strings/
     // cargo build --target wasm32-unknown-unknown --release
 */
-
-
-function u8array2hex(u8array) { // buffer is an ArrayBuffer
-  return [...u8array]
-      .map(x => x.toString(16).padStart(2, '0'))
-      .join('');
-}
-
-
-async function  base64_arraybuffer(data) {
-    // Use a FileReader to generate a base64 data URI
-    const base64url = await new Promise((r) => {
-        const reader = new FileReader()
-        reader.onload = () => r(reader.result)
-        reader.readAsDataURL(new Blob([data]))
-    })
-
-    /*
-    The result looks like 
-    "data:application/octet-stream;base64,<your base64 data>", 
-    so we split off the beginning:
-    */
-    return base64url.substring(base64url.indexOf(',')+1)
-}
-
-
-
-  
-
-
-
-
-  async function main() {
-
-      let wasmod = new WASMInterface('/wasm/wasm_nopackage')
-      await wasmod.init("mod")
-
-      wasmod.test_callback();
-
+      async function main() {
+        //
+        let wasmod = new WASMInterface('/wasm/testup')
+        await wasmod.init("mod")
+        wasmod.startup()  // entrypoint is from the module call tables
+        wasmod.test_callback();  // the module wasm-nopackage provides this entry point.
+        //
+      }
       //
-  }
-
-  setTimeout(main,1000)
-
+      setTimeout(main,1000)
 
     </script>
   </body>
 </html>
-
-
-
-
-
-
-
-
 

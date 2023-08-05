@@ -12,10 +12,16 @@ https://depth-first.com/articles/2020/07/07/rust-and-webassembly-from-scratch-he
 */
 
 type ExOp = fn(s: *mut i8, size: usize) -> ();
+type StrFetch = fn() -> &'static str;
 
 fn do_nothing(_s: *mut i8, _size: usize) -> () {}
+fn unused_mod_name() -> &'static str {
+    let my_str : &str = "basic module";
+    return my_str;
+}
 
 static mut INTERNAL_MESSENGER : ExOp = do_nothing;
+static mut INTERNAL_STR_REVEAL : StrFetch = unused_mod_name;
 
 
 unsafe fn convert_str(input: &str) -> *mut c_char {
@@ -76,17 +82,30 @@ pub fn dealloc(ptr: *mut u8, size: usize) {
 
 
 
-static PLUGIN_NAME: &'static str = "Basic Crate";
+
+#[no_mangle]
+pub fn set_plugin_name(namer : StrFetch) {
+    unsafe {
+        INTERNAL_STR_REVEAL = namer;
+    }
+}
+
 
 #[no_mangle]
 pub extern "C" fn plugin_name() -> *mut c_char {
-    let s = CString::new(PLUGIN_NAME).unwrap();
-    s.into_raw()
+    unsafe {
+        let a_str = INTERNAL_STR_REVEAL();
+        let s = CString::new(a_str).unwrap();
+        s.into_raw()    
+    }
 }
 
 #[no_mangle]
 pub fn plugin_name_len() -> usize {
-    PLUGIN_NAME.len()
+    unsafe {
+        let a_str = INTERNAL_STR_REVEAL();
+        a_str.len()    
+    }
 }
 
 

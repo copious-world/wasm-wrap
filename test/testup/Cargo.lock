@@ -11,6 +11,6 @@ dependencies = [
 
 [[package]]
 name = "wasm-nopackage"
-version = "0.1.2"
+version = "0.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0e919353b3e9a8652858cceef5bcbce367d7a6639c8e74fcdebbbd6278dbc17d"
+checksum = "46a74ed1a703bd7c774de4b4d4f61c2b9a57a3ec57b7a40cc72a26d1d21de51d"
