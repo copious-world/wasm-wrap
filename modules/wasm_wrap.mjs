@@ -3,7 +3,7 @@
  *  where the module will make use of a basic allocation and deallocation.
  *  The interface will provide one based callback for the module for the purpose of logging.
  */
-class WASMInterface {
+export class WASMInterface {
     constructor(mod_path) {
         this._mod_path = mod_path;
         this.linearMemory = false;
@@ -84,7 +84,7 @@ class WASMInterface {
         }
         return '';
     }
-    ;
+    
     /**
      *
      * @param pointer - the memory offset into the WASM page where text data is located
@@ -125,6 +125,11 @@ class WASMInterface {
         let str = this.wasm_string(str_offset, size);
         alert(str);
     }
+
+    /**
+     * 
+     * @returns the string that is the name of the plugin
+     */
     plugin_name_str() {
         let plgn_name_ref = this.plugin_name();
         let slen = this.plugin_name_len();
